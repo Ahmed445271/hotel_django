@@ -1,0 +1,11 @@
+{% extends "hotel/base.html" %}
+{% block titre %}Connexion{% endblock %}
+{% block contenu %}
+<div class="panneau formulaire">
+  <h1>Espace administrateur</h1>
+  <form method="post">{% csrf_token %}
+    {% include "hotel/_champs.html" %}
+    <button class="bouton">Se connecter</button>
+  </form>
+</div>
+{% endblock %}

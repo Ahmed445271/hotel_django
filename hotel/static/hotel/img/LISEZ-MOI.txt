@@ -1,0 +1,13 @@
+PHOTOS DE L'ACCUEIL
+Placez ici vos photos (format .jpg) avec EXACTEMENT ces noms :
+
+  hero.jpg                  grande image du haut de la page d'accueil
+  reception.jpg             la réception
+  piscine-exterieure.jpg    la piscine extérieure
+  piscine-couverte.jpg      la piscine couverte
+  salle-de-sport.jpg        la salle de sport
+  spa.jpg                   le spa
+
+Sans photo, un décor de remplacement s'affiche (le site fonctionne quand même).
+Photos gratuites : unsplash.com ou pexels.com (citez la source dans le rapport).
+Conseil : largeur 1200 px, moins de 500 Ko chacune.

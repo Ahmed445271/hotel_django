@@ -1,0 +1,36 @@
+{% extends "hotel/base.html" %}
+{% block titre %}Chambre {{ chambre.num_chambre }} – {{ NOM_HOTEL }}{% endblock %}
+{% block contenu %}
+<p><a href="{% url 'liste_chambres' %}" class="retour">← Retour aux chambres</a></p>
+<div class="detail">
+  <section>
+    <div class="photo photo-grande">
+      {% if chambre.photo %}<img src="{{ chambre.photo.url }}" alt="Chambre {{ chambre.num_chambre }}">{% else %}🛏️{% endif %}
+    </div>
+    <div class="panneau">
+      <h1>Chambre {{ chambre.num_chambre }} – {{ chambre.get_type_chambre_display }}</h1>
+      <p class="aide">{{ chambre.description }}</p>
+      <h3>Équipements</h3>
+      <ul class="equipements">
+        {% for e in chambre.liste_equipements %}<li>✓ {{ e }}</li>{% empty %}<li>Non renseignés</li>{% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <aside class="panneau reservation">
+    <p class="prix grand">{{ chambre.prix_nuit|floatformat:"-2" }} {{ DEVISE }}<small>/nuit</small></p>
+    {% if chambre.est_occupee %}
+      <p class="etat rouge">Occupée aujourd'hui</p>
+      <p class="aide">Vous pouvez réserver à partir d'une autre date.</p>
+    {% else %}
+      <p class="etat vert">Chambre libre</p>
+    {% endif %}
+    <p class="aide">Sélectionnez vos dates et complétez votre réservation</p>
+    <form method="post">{% csrf_token %}
+      {% include "hotel/_champs.html" %}
+      <button class="bouton large">Réserver maintenant</button>
+    </form>
+    <ul class="avantages"><li>✓ Annulation possible avant l'arrivée</li><li>✓ Confirmation instantanée</li></ul>
+  </aside>
+</div>
+{% endblock %}

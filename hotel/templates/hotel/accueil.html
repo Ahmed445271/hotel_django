@@ -1,0 +1,355 @@
+{% extends "hotel/base.html" %}
+{% load static %}
+{% block hero %}
+<section class="hero">
+  <div class="hero-texte">
+    <p class="sur-titre">Hôtel · Piscines · Spa · Bien-être</p>
+    <h1>{{ NOM_HOTEL }}</h1>
+    <p class="hero-sous">Un séjour d'exception, du premier sourire à la dernière nuit.</p>
+    <a class="bouton or" href="{% url 'liste_chambres' %}">Réserver une chambre</a>
+    <a class="bouton contour" href="#services">Découvrir nos services</a>
+    <p class="hero-info">{{ stats.chambres_libres }} chambre(s) libre(s) sur {{ stats.total_chambres }} aujourd'hui</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block contenu %}
+
+<!-- ============ 1. LE LUXE / LA RÉCEPTION ============ -->
+<section id="services" class="section">
+  <div class="titre-section">
+    <p class="sur-titre">Notre hôtel</p>
+    <h2>Le luxe au quotidien</h2>
+  </div>
+  <div class="bloc">
+    <figure class="photo-reception">
+  <img src="{% static 'hotel/img/reception.webp' %}" alt="La réception de l'hôtel">
+</figure>
+    <div>
+      <h3>Une réception à votre service</h3>
+      <p>Dès votre arrivée, notre équipe vous accueille dans un hall élégant et chaleureux.
+         Enregistrement rapide, conseils personnalisés et attention à chaque détail :
+         votre confort est notre priorité.</p>
+      <ul class="liste-or">
+        <li>Accueil personnalisé et conciergerie</li>
+        <li>Chambres confortables, simples, doubles et suites</li>
+        <li>Réservation facile et confirmation instantanée</li>
+      </ul>
+      <a class="bouton" href="{% url 'liste_chambres' %}">Voir nos chambres</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. LES PISCINES ============ -->
+<section class="section">
+  <div class="titre-section">
+    <p class="sur-titre">Détente</p>
+    <h2>Nos deux piscines</h2>
+  </div>
+  <div class="duo">
+    <article class="carte-service">
+      <img class="photo" src="{% static 'hotel/img/piscine 2.jpg' %}" alt="Piscine extérieure">
+      <div class="carte-service-texte">
+        <h3>Piscine extérieure</h3>
+        <p>Profitez du soleil au bord de l'eau, entre transats et moments de repos.</p>
+      </div>
+    </article>
+    <article class="carte-service">
+      <img class="photo" src="{% static 'hotel/img/piscine couvert.jpg' %}" alt="Piscine couvert">
+      <div class="carte-service-texte">
+        <h3>Piscine couverte</h3>
+        <p>Un espace calme et abrité pour nager en toute saison, quelle que soit la météo.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 3. SALLE DE SPORT ET SPA ============ -->
+<section class="section">
+  <div class="titre-section">
+    <p class="sur-titre">Bien-être</p>
+    <h2>Sport et spa</h2>
+  </div>
+  <div class="bloc">
+    <img class="img-service" src="{% static 'hotel/img/salle de sport .jpg' %}" alt="La salle de sport">
+    <div>
+      <h3>Salle de sport</h3>
+      <p>Une salle équipée pour garder la forme pendant votre séjour : cardio, musculation
+         et espace d'étirements, ouverte à tous nos clients.</p>
+    </div>
+  </div>
+  <div class="bloc inverse">
+    <img class="img-service" src="{% static 'hotel/img/spa.avif' %}" alt="Le spa">
+    <div>
+      <h3>Spa</h3>
+      <p>Offrez-vous une parenthèse de calme : soins, relaxation et ambiance apaisante
+         pour une détente complète.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. COURS COLLECTIFS ============ -->
+
+<section class="section bande">
+  <div class="titre-section">
+    <p class="sur-titre">Activités</p>
+    <h2>Nos activités & loisirs</h2>
+  </div>
+
+  <div class="cours">
+
+    <article class="cours-carte yoga">
+      <img class="img-cours" src="{% static 'hotel/img/yoga.png' %}" alt="Cours de yoga" onerror="this.style.display='none'">
+      <div class="cours-texte">
+        <h3>Yoga</h3>
+        <p>Respiration, souplesse et sérénité, pour commencer ou finir la journée en douceur.</p>
+      </div>
+    </article>
+
+    <article class="cours-carte danse">
+      <img class="img-cours" src="{% static 'hotel/img/danse.jpg' %}" alt="Cours de danse" onerror="this.style.display='none'">
+      <div class="cours-texte">
+        <h3>Danse</h3>
+        <p>Un cours joyeux et rythmé, accessible à tous les niveaux.</p>
+      </div>
+    </article>
+
+    <article class="cours-carte spinning">
+      <img class="img-cours" src="{% static 'hotel/img/spinning.avif' %}" alt="Cours de spinning" onerror="this.style.display='none'">
+      <div class="cours-texte">
+        <h3>Spinning</h3>
+        <p>Une séance énergique sur vélo, en musique et en groupe.</p>
+      </div>
+    </article>
+
+    <!-- Tennis -->
+    <article class="cours-carte tennis">
+      <img class="img-cours" src="{% static 'hotel/img/tennis.webp' %}" alt="Tennis" onerror="this.style.display='none'">
+      <div class="cours-texte">
+        <h3>Tennis</h3>
+        <p>Profitez de notre court de tennis pour pratiquer votre sport préféré, améliorer vos performances et partager des moments sportifs et conviviaux.</p>
+      </div>
+    </article>
+
+    <!-- Bowling -->
+    <article class="cours-carte bowling">
+      <img class="img-cours" src="{% static 'hotel/img/bowling.webp' %}" alt="Bowling" onerror="this.style.display='none'">
+      <div class="cours-texte">
+        <h3>Bowling</h3>
+        <p>Venez découvrir notre espace bowling et profitez d'un moment de divertissement et de compétition entre amis ou en famille dans une ambiance agréable.</p>
+      </div>
+    </article>
+
+    <!-- Soirée musicale -->
+    <article class="cours-carte musical">
+      <img class="img-cours" src="{% static 'hotel/img/soire music.jpg' %}" alt="Soirée musicale" onerror="this.style.display='none'">
+      <div class="cours-texte">
+        <h3>Soirée musicale</h3>
+        <p>Passez une soirée inoubliable au rythme de la musique live, avec des artistes talentueux et une ambiance festive pour profiter pleinement de votre séjour à l'hôtel.</p>
+      </div>
+    </article>
+
+  </div>
+
+  <h3 class="sous-titre">📅 Planning de la semaine</h3>
+
+  <div class="legende">
+    <span class="seance yoga">Yoga</span>
+    <span class="seance danse">Danse</span>
+    <span class="seance spinning">Spinning</span>
+    <span class="seance tennis">Tennis</span>
+    <span class="seance bowling">Bowling</span>
+    <span class="seance musical">Soirée musicale</span>
+  </div>
+
+  <div class="tableau-scroll">
+    <table class="horaires">
+      <thead>
+        <tr>
+          <th>Horaire</th>
+          <th>Lundi</th>
+          <th>Mardi</th>
+          <th>Mercredi</th>
+          <th>Jeudi</th>
+          <th>Vendredi</th>
+          <th>Samedi</th>
+          <th>Dimanche</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row">08:00 – 09:00</th>
+          <td><span class="seance yoga">Yoga</span></td>
+          <td></td>
+          <td><span class="seance yoga">Yoga</span></td>
+          <td></td>
+          <td><span class="seance yoga">Yoga</span></td>
+          <td><span class="seance yoga">Yoga</span></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th scope="row">10:00 – 11:00</th>
+          <td></td>
+          <td><span class="seance danse">Danse</span></td>
+          <td></td>
+          <td><span class="seance danse">Danse</span></td>
+          <td></td>
+          <td><span class="seance danse">Danse</span></td>
+          <td><span class="seance yoga">Yoga</span></td>
+        </tr>
+
+        <tr>
+          <th scope="row">11:00 – 12:00</th>
+          <td><span class="seance tennis">Tennis</span></td>
+          <td></td>
+          <td><span class="seance tennis">Tennis</span></td>
+          <td></td>
+          <td><span class="seance tennis">Tennis</span></td>
+          <td></td>
+          <td><span class="seance tennis">Tennis</span></td>
+        </tr>
+
+        <tr>
+          <th scope="row">15:00 – 16:00</th>
+          <td></td>
+          <td><span class="seance bowling">Bowling</span></td>
+          <td></td>
+          <td><span class="seance bowling">Bowling</span></td>
+          <td></td>
+          <td><span class="seance bowling">Bowling</span></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th scope="row">18:00 – 19:00</th>
+          <td><span class="seance spinning">Spinning</span></td>
+          <td></td>
+          <td><span class="seance spinning">Spinning</span></td>
+          <td></td>
+          <td><span class="seance spinning">Spinning</span></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th scope="row">19:30 – 20:30</th>
+          <td><span class="seance danse">Danse</span></td>
+          <td><span class="seance yoga">Yoga</span></td>
+          <td></td>
+          <td><span class="seance spinning">Spinning</span></td>
+          <td></td>
+          <td><span class="seance spinning">Spinning</span></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th scope="row">21:00 – 23:00</th>
+          <td></td>
+          <td></td>
+          <td><span class="seance musical">Soirée musicale</span></td>
+          <td></td>
+          <td><span class="seance musical">Soirée musicale</span></td>
+          <td></td>
+          <td><span class="seance musical">Soirée musicale</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="aide" style="text-align:center;margin-top:12px">
+    Horaires indicatifs, confirmés à la réception.
+  </p>
+</section>
+
+<script>
+  // Met en valeur la colonne du jour (1 = lundi ... 7 = dimanche)
+  var colonne = (new Date().getDay() + 6) % 7 + 1;
+  document.querySelectorAll(".horaires tr").forEach(function (ligne) {
+    if (ligne.children[colonne]) { ligne.children[colonne].classList.add("aujourdhui"); }
+  });
+</script>
+<style>
+  /* Fond de la page : sable chaud au lieu du blanc */
+  body{background:#efe6d4}
+  .carte,.carte-service,.panneau{background:#fffcf6}
+
+  /* Bandes bleu marine sur toute la largeur de l'écran */
+  .bande{background:#14233b;box-shadow:0 0 0 100vmax #14233b;clip-path:inset(0 -100vmax);
+         color:#f3ebdd;padding:56px 0 40px}
+  .bande .sur-titre{color:#d4b06a}
+  .bande .titre-section h2::after{background:#d4b06a}
+  .bande .aide{color:#c5cedb}
+  .bande .carte-service{background:#1c3253;border-color:#324f78}
+
+  /* Cartes des cours avec image */
+  .cours{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-bottom:44px}
+  .cours-carte{background:#1c3253;border:1px solid #324f78;border-top:4px solid #d4b06a;
+               border-radius:16px;overflow:hidden;padding:0;text-align:left;
+               box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .cours-carte.yoga{border-top-color:#4f8a73}
+  .cours-carte.danse{border-top-color:#a2475c}
+  .cours-carte.spinning{border-top-color:#c27a2c}
+  .img-cours{display:block;width:100%;height:210px;object-fit:cover}
+  .cours-texte{padding:18px 22px}
+  .cours-texte h3{margin:0 0 6px}
+  .sous-titre{text-align:center;font-size:1.5rem;margin:10px 0 14px}
+
+  /* Planning de la semaine */
+  .seance{display:block;padding:6px 8px;border-radius:8px;color:#fff;
+          font-weight:600;font-size:.85rem;text-align:center}
+  .seance.yoga{background:#4f8a73}
+  .seance.danse{background:#a2475c}
+  .seance.spinning{background:#c27a2c}
+  .legende{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
+  .legende .seance{min-width:110px}
+  .tableau-scroll{overflow-x:auto;border-radius:14px;border:1px solid #324f78}
+  .horaires{width:100%;min-width:780px;border-collapse:collapse}
+  .horaires th,.horaires td{padding:12px 8px;border:1px solid #324f78;text-align:center;white-space:normal}
+  .horaires thead th{background:#0e1a2e;color:#d4b06a;font-size:1rem}
+  .horaires tbody th{background:#0e1a2e;color:#f3ebdd;font-size:.9rem;white-space:nowrap}
+  .horaires td{background:#1c3253;height:56px}
+  .horaires td.aujourdhui{background:#2a4670}
+  .horaires thead th.aujourdhui{background:#d4b06a;color:#14233b}
+  .tennis {
+    --couleur-activite: #2e9d63;
+    }
+  .bowling {
+    --couleur-activite: #e59a32;
+  }
+  .musical {
+    --couleur-activite: #9864c8;
+  }
+  .seance.tennis {
+    background-color: #d8f3e3;
+    color: #207447;
+  }
+  .seance.bowling {
+    background-color: #fff0d9;
+    color: #a96613;
+  }
+  .seance.musical {
+    background-color: #eee2fa;
+    color: #7443a4;
+  }
+  @media(max-width:800px){ .bande{padding:40px 0 28px} }
+</style>
+<!-- ============ 5. CHAMBRES DISPONIBLES ============ -->
+<section class="section">
+  <div class="titre-section">
+    <p class="sur-titre">Séjourner</p>
+    <h2>Chambres disponibles</h2>
+  </div>
+  <div class="grille">
+    {% for chambre in chambres %}{% include "hotel/_carte_chambre.html" %}
+    {% empty %}<p>Aucune chambre libre pour le moment.</p>{% endfor %}
+  </div>
+</section>
+
+<section class="bandeau">
+  <h2>Prêt pour votre séjour ?</h2>
+  <p>Choisissez votre chambre et réservez en quelques clics.</p>
+  <a class="bouton or" href="{% url 'liste_chambres' %}">Réserver maintenant</a>
+</section>
+{% endblock %}

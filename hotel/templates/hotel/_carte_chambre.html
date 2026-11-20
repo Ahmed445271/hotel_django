@@ -1,0 +1,11 @@
+<article class="carte">
+  <a href="{% url 'detail_chambre' chambre.pk %}" class="photo">
+    {% if chambre.photo %}<img src="{{ chambre.photo.url }}" alt="Chambre {{ chambre.num_chambre }}">{% else %}🛏️{% endif %}
+  </a>
+  <div class="carte-corps">
+    <h3>Chambre {{ chambre.num_chambre }} – {{ chambre.get_type_chambre_display }}</h3>
+    <p class="prix">{{ chambre.prix_nuit|floatformat:"-2" }} {{ DEVISE }}<small>/nuit</small></p>
+    {% if chambre.est_occupee %}<span class="badge rouge">Occupée aujourd'hui</span>{% else %}<span class="badge vert">Libre</span>{% endif %}
+    <p><a class="bouton petit" href="{% url 'detail_chambre' chambre.pk %}">Voir les détails</a></p>
+  </div>
+</article>

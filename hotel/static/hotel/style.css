@@ -1,0 +1,176 @@
+/* Design "hôtel de luxe" : bleu marine + or + ivoire, titres en serif.
+   Les couleurs sont des variables : changez-les ici pour changer tout le site. */
+:root{--marine:#14233b;--accent:#9c742f;--or:#d4b06a;--fond:#faf7f2;--carte:#fff;--texte:#1d2433;--gris:#6c7280;
+  --bordure:#e8e1d3;--logo:#14233b;--vert:#2f9e44;--rouge:#d6483a;--bleu:#2f7fd1;
+  --serif:Georgia,"Times New Roman",serif}
+body.admin{--fond:#0f1b2d;--carte:#17283f;--texte:#e9eef5;--gris:#9db0c3;--bordure:#2a4262}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Segoe UI",system-ui,sans-serif;background:var(--fond);color:var(--texte);line-height:1.6}
+.conteneur{max-width:1100px;margin:0 auto;padding:0 20px}
+main.conteneur{padding-top:24px;padding-bottom:40px;min-height:60vh}
+h1,h2,h3{font-family:var(--serif);font-weight:600}
+h1{margin:.2em 0 .6em}
+
+/* ----- En-tête et pied ----- */
+.barre{background:var(--marine);border-bottom:2px solid var(--accent)}
+.barre-contenu{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding-top:14px;padding-bottom:14px}
+.logo{font-family:var(--serif);font-size:1.4rem;color:var(--or);text-decoration:none;letter-spacing:.04em}
+nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+nav a,.lien{color:#dfe5ee;text-decoration:none;font:inherit;font-size:.95rem;background:none;border:0;cursor:pointer;padding:0}
+nav a:hover,.lien:hover{color:var(--or)}
+.form-inline{display:inline;margin:0}
+.pied{background:var(--marine);color:#aeb9c9;text-align:center;font-size:.85rem;padding:22px}
+
+.alerte{padding:12px 16px;border-radius:8px;margin-bottom:16px;font-weight:600}
+.alerte.success{background:#dff5e4;color:#1b6b30}.alerte.error{background:#fbe0dc;color:#9a2a1f}
+
+/* ----- Boutons ----- */
+.bouton{display:inline-block;background:var(--accent);color:#fff;padding:10px 20px;border-radius:6px;border:1px solid var(--accent);
+  text-decoration:none;cursor:pointer;font:inherit;font-weight:600;letter-spacing:.02em}
+.bouton:hover{filter:brightness(1.1)}
+.bouton.secondaire{background:transparent;color:var(--accent)}
+.bouton.danger{background:var(--rouge);border-color:var(--rouge);color:#fff}
+.bouton.petit{padding:4px 10px;font-size:.85rem}
+.bouton.large{width:100%;margin-top:6px}
+.bouton.or{background:var(--or);border-color:var(--or);color:var(--marine)}
+.bouton.contour{background:transparent;border-color:#fff;color:#fff}
+
+/* ----- Accueil : bandeau principal ----- */
+.hero{min-height:540px;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding:60px 20px;
+  background:linear-gradient(rgba(10,20,38,.55),rgba(10,20,38,.68)),url("img/hero.jpg") center/cover,linear-gradient(135deg,#14233b,#34557f)}
+.hero h1{font-size:3.4rem;margin:.1em 0;letter-spacing:.03em}
+.hero-sous{font-size:1.25rem;font-family:var(--serif);font-style:italic;margin-bottom:28px}
+.hero .bouton{margin:4px 6px}
+.hero-info{margin-top:22px;opacity:.85;font-size:.9rem}
+.sur-titre{color:var(--accent);letter-spacing:.22em;text-transform:uppercase;font-size:.78rem;font-weight:700;margin:0}
+.hero .sur-titre{color:var(--or)}
+
+/* ----- Accueil : sections ----- */
+.section{padding:44px 0 8px}
+.titre-section{text-align:center;margin-bottom:32px}
+.titre-section h2{font-size:2.1rem;margin:.15em 0}
+.titre-section h2::after{content:"";display:block;width:60px;height:2px;background:var(--accent);margin:12px auto 0}
+.bloc{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:44px}
+.bloc.inverse .photo-service{order:2}
+.bloc h3{font-size:1.6rem;margin-top:0}
+.liste-or{list-style:none;padding:0}.liste-or li::before{content:"✦ ";color:var(--accent)}
+.photo-service{position:relative;height:340px;border-radius:14px;overflow:hidden;
+  background:linear-gradient(135deg,#34557f,#14233b);box-shadow:0 10px 30px rgba(20,35,59,.18)}
+.photo-service img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo-secours{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:4rem;color:#fff}
+.photo-secours small{font-size:.75rem;opacity:.6}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:36px}
+.carte-service{background:var(--carte);border:1px solid var(--bordure);border-radius:14px;overflow:hidden}
+.carte-service .photo-service{height:260px;border-radius:0;box-shadow:none}
+.carte-service-texte{padding:16px 20px}.carte-service-texte h3{margin:0 0 6px}
+.cours{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-bottom:36px}
+.cours-carte{background:var(--carte);border:1px solid var(--bordure);border-top:3px solid var(--accent);border-radius:12px;padding:24px;text-align:center}
+.cours-carte .icone{font-size:2.6rem}.cours-carte h3{margin:.3em 0}
+.bandeau{background:linear-gradient(135deg,#14233b,#2c4a73);color:#fff;text-align:center;border-radius:14px;padding:40px 20px;margin-top:30px}
+.bandeau h2{margin-top:0}
+@media(max-width:800px){.bloc,.duo{grid-template-columns:1fr}.bloc.inverse .photo-service{order:0}.hero h1{font-size:2.4rem}}
+
+/* ----- Chambres ----- */
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.carte{background:var(--carte);border:1px solid var(--bordure);border-radius:12px;overflow:hidden}
+.carte-corps{padding:14px 16px}.carte-corps h3{margin:0 0 6px}
+.photo{display:block;height:170px;background:linear-gradient(135deg,#34557f,#14233b);text-align:center;font-size:3rem;line-height:170px;overflow:hidden;text-decoration:none}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-grande{height:320px;line-height:320px;border-radius:12px}
+.prix{color:var(--accent);font-weight:700;font-size:1.2rem;margin:4px 0}.prix small{font-weight:400;color:var(--gris)}
+.prix.grand{font-size:2rem}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.8rem;font-weight:600}
+.badge.vert,.badge.a_venir{background:#dff5e4;color:#1b6b30}
+.badge.rouge{background:#fbe0dc;color:#9a2a1f}
+.badge.en_cours{background:#dbe9fb;color:#1c4e8a}
+.badge.terminee{background:#e6e4ee;color:#4b4860}
+.etat{padding:8px;border-radius:8px;text-align:center;color:#fff;font-weight:600}
+.etat.vert{background:var(--vert)}.etat.rouge{background:var(--rouge)}
+.detail{display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:start}
+@media(max-width:800px){.detail{grid-template-columns:1fr}}
+.panneau{background:var(--carte);border:1px solid var(--bordure);border-radius:12px;padding:18px 20px;margin-top:18px}
+.equipements{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.avantages{list-style:none;padding:0;color:var(--gris);font-size:.9rem}
+.retour{color:var(--accent);text-decoration:none;font-weight:600}
+.aide{color:var(--gris);font-size:.9rem;margin:4px 0}
+
+/* ----- Formulaires et tableaux ----- */
+label{display:block;font-weight:600;font-size:.9rem;margin-bottom:3px}
+input,select,textarea{width:100%;padding:9px 10px;border:1px solid var(--bordure);border-radius:8px;background:var(--fond);color:var(--texte);font:inherit}
+.champ{margin-bottom:12px}.erreur{color:var(--rouge);font-size:.88rem;margin:3px 0}
+.formulaire{max-width:560px;margin-left:auto;margin-right:auto}
+.filtres{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.filtres input,.filtres select{width:auto;min-width:200px}
+.entete{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.onglets{display:flex;gap:8px;margin:10px 0}
+.onglets a{padding:5px 14px;border-radius:999px;text-decoration:none;color:var(--gris);border:1px solid var(--bordure)}
+.onglets a.actif{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tableau{overflow-x:auto}table{width:100%;border-collapse:collapse}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--bordure);white-space:nowrap}
+th{color:var(--gris);font-size:.85rem}
+.actions{display:flex;gap:6px;align-items:center}
+
+/* ----- Tableau de bord ----- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:8px}
+.stat{border-radius:12px;padding:16px 18px;color:#fff;display:flex;flex-direction:column}
+.stat span,.stat small{opacity:.85;font-size:.85rem}.stat strong{font-size:1.9rem}
+.stat.violet{background:linear-gradient(135deg,#34557f,#14233b)}.stat.bleu{background:linear-gradient(135deg,#3a8ee0,#2467b3)}
+.stat.vert{background:linear-gradient(135deg,#37b24d,#237a35)}.stat.rouge{background:linear-gradient(135deg,#c9a24d,#8a6420)}
+.carte-client{background:var(--fond);border:1px solid var(--bordure);border-radius:10px;padding:12px 14px}
+.carte-client p{display:flex;justify-content:space-between;margin:4px 0;color:var(--gris)}
+.vert-texte{color:#51cf66}
+/* Photo de la réception : taille équilibrée */
+.photo-reception{margin:0;height:360px;border-radius:14px;overflow:hidden;
+  box-shadow:0 10px 30px rgba(20,35,59,.18)}
+.photo-reception img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+@media(max-width:800px){.photo-reception{height:260px}}
+/* ===== Images des services (professionnel) ===== */
+.img-service{
+  display:block;
+  width:100%;
+  height:340px;
+  object-fit:cover;
+  transition:transform .5s;
+}
+
+/* Piscines : deux cartes côte à côte */
+.duo{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  margin:30px 0;
+}
+.carte-service{
+  background:#fff;
+  border:1px solid #e8e1d3;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(20,35,59,.10);
+  transition:transform .3s, box-shadow .3s;
+}
+.carte-service:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 32px rgba(20,35,59,.18);
+}
+.carte-service:hover .img-service{transform:scale(1.04)}
+.carte-service-texte{padding:20px 24px}
+.carte-service-texte h3{margin:0 0 8px;font-size:1.4rem}
+
+/* Réception, salle de sport, spa : image à côté du texte */
+.bloc{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+  margin-bottom:48px;
+}
+.bloc .img-service{
+  height:380px;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(20,35,59,.18);
+}
+
+@media(max-width:800px){
+  .duo,.bloc{grid-template-columns:1fr}
+  .img-service,.bloc .img-service{height:260px}
+}

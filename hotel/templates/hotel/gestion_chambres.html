@@ -1,0 +1,27 @@
+{% extends "hotel/base.html" %}
+{% block titre %}Gérer les chambres{% endblock %}
+{% block contenu %}
+<div class="entete"><h1>Gestion des chambres</h1><a class="bouton" href="{% url 'chambre_ajouter' %}">+ Ajouter une chambre</a></div>
+<div class="onglets">
+  <a href="?filtre=toutes" class="{% if filtre == 'toutes' %}actif{% endif %}">Toutes</a>
+  <a href="?filtre=libres" class="{% if filtre == 'libres' %}actif{% endif %}">Libres</a>
+  <a href="?filtre=occupees" class="{% if filtre == 'occupees' %}actif{% endif %}">Occupées</a>
+</div>
+<div class="tableau panneau"><table>
+  <tr><th>N°</th><th>Type</th><th>Prix / nuit</th><th>Statut</th><th>Actions</th></tr>
+  {% for c in chambres %}
+  <tr><td>{{ c.num_chambre }}</td><td>{{ c.get_type_chambre_display }}</td>
+    <td>{{ c.prix_nuit|floatformat:"-2" }} {{ DEVISE }}</td>
+    <td>{% if c.occupee %}<span class="badge rouge">Occupée</span>{% else %}<span class="badge vert">Libre</span>{% endif %}</td>
+    <td class="actions">
+      <a class="bouton petit secondaire" href="{% url 'chambre_modifier' c.pk %}">Modifier</a>
+      <a class="bouton petit danger" href="{% url 'chambre_supprimer' c.pk %}">Supprimer</a>
+      {% if c.occupee %}
+      <form method="post" action="{% url 'reservation_liberer' c.reservation_actuelle.pk %}" class="form-inline">{% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.get_full_path }}">
+        <button class="bouton petit">Libérer</button></form>
+      {% endif %}
+    </td></tr>
+  {% empty %}<tr><td colspan="5">Aucune chambre.</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

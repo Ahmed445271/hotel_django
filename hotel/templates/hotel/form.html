@@ -1,0 +1,12 @@
+{% extends "hotel/base.html" %}
+{% block titre %}{{ titre }}{% endblock %}
+{% block contenu %}
+<div class="panneau formulaire">
+  <h1>{{ titre }}</h1>
+  <form method="post" enctype="multipart/form-data">{% csrf_token %}
+    {% include "hotel/_champs.html" %}
+    <button class="bouton">Enregistrer</button>
+    <a class="bouton secondaire" href="{{ retour }}">Annuler</a>
+  </form>
+</div>
+{% endblock %}

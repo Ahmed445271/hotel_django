@@ -1,0 +1,21 @@
+{% extends "hotel/base.html" %}
+{% block titre %}Chambres – {{ NOM_HOTEL }}{% endblock %}
+{% block contenu %}
+<h1>Nos chambres</h1>
+<form method="get" class="filtres">
+  <select name="type">
+    <option value="">Tous les types</option>
+    {% for code, nom in types %}<option value="{{ code }}" {% if code == type_choisi %}selected{% endif %}>{{ nom }}</option>{% endfor %}
+  </select>
+  <select name="statut">
+    <option value="">Libres et occupées</option>
+    <option value="libre" {% if statut == "libre" %}selected{% endif %}>Libres aujourd'hui</option>
+    <option value="occupee" {% if statut == "occupee" %}selected{% endif %}>Occupées aujourd'hui</option>
+  </select>
+  <button class="bouton">Filtrer</button>
+</form>
+<div class="grille">
+  {% for chambre in chambres %}{% include "hotel/_carte_chambre.html" %}
+  {% empty %}<p>Aucune chambre ne correspond.</p>{% endfor %}
+</div>
+{% endblock %}

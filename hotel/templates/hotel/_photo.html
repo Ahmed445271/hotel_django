@@ -1,0 +1,5 @@
+{% load static %}{# Affiche static/hotel/img/<fichier>. Si la photo n'existe pas encore, un décor de remplacement reste visible. #}
+<div class="photo-service">
+  <span class="photo-secours">{{ icone }}<small>{{ fichier }}</small></span>
+  <img src="{% static 'hotel/img/'|add:fichier %}" alt="{{ legende }}" onerror="this.remove()">
+</div>

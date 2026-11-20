@@ -1,0 +1,46 @@
+{% extends "hotel/base.html" %}
+{% block titre %}Tableau de bord – {{ NOM_HOTEL }}{% endblock %}
+{% block classe_body %}admin{% endblock %}
+{% block contenu %}
+<h1>Tableau de Bord Administrateur</h1>
+
+<div class="stats">
+  <div class="stat violet"><span>Taux d'occupation</span><strong>{{ stats.taux_occupation|floatformat:"-1" }}%</strong>
+    <small>{{ stats.chambres_occupees }} chambre(s) occupée(s)</small></div>
+  <div class="stat bleu"><span>Chambres libres</span><strong>{{ stats.chambres_libres }}</strong>
+    <small>sur {{ stats.total_chambres }} chambres</small></div>
+  <div class="stat vert"><span>Réservations</span><strong>{{ stats.reservations_mois }}</strong>
+    <small>ce mois</small></div>
+  <div class="stat rouge"><span>Revenu</span><strong>{{ stats.revenu_mois|floatformat:"-2" }} {{ DEVISE }}</strong>
+    <small>ce mois</small></div>
+</div>
+
+<section class="panneau">
+  <h2>📅 Réservations récentes</h2>
+  <div class="onglets">
+    <a href="?filtre=tous" class="{% if filtre == 'tous' %}actif{% endif %}">Tous</a>
+    <a href="?filtre=confirmees" class="{% if filtre == 'confirmees' %}actif{% endif %}">En cours et à venir</a>
+    <a href="?filtre=passees" class="{% if filtre == 'passees' %}actif{% endif %}">Passées</a>
+  </div>
+  <div class="tableau"><table>
+    <tr><th>N° Réservation</th><th>Client</th><th>Chambre</th><th>Dates</th><th>Statut</th><th>Prix</th></tr>
+    {% for r in reservations %}
+    <tr><td>{{ r.numero }}</td><td>{{ r.client }}</td><td>#{{ r.chambre.num_chambre }}</td>
+      <td>{{ r.date_debut|date:"d/m/Y" }} - {{ r.date_fin|date:"d/m/Y" }}</td>
+      <td><span class="badge {{ r.statut_code }}">{{ r.statut }}</span></td>
+      <td>{{ r.prix_total|floatformat:"-2" }} {{ DEVISE }}</td></tr>
+    {% empty %}<tr><td colspan="6">Aucune réservation.</td></tr>{% endfor %}
+  </table></div>
+</section>
+
+<section class="panneau">
+  <h2>⭐ Clients fidèles</h2>
+  <div class="grille">
+    {% for c in fideles %}
+    <div class="carte-client"><strong>{{ c }}</strong>
+      <p><span>Réservations</span><b>{{ c.nb_reservations }}</b></p>
+      <p><span>Dépenses totales</span><b class="vert-texte">{{ c.depense_totale|floatformat:"-2" }} {{ DEVISE }}</b></p></div>
+    {% empty %}<p>Pas encore de client.</p>{% endfor %}
+  </div>
+</section>
+{% endblock %}

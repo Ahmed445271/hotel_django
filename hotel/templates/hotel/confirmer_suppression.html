@@ -1,0 +1,12 @@
+{% extends "hotel/base.html" %}
+{% block titre %}Confirmer la suppression{% endblock %}
+{% block contenu %}
+<div class="panneau formulaire">
+  <h1>Supprimer « {{ object }} » ?</h1>
+  <p>Cette action est définitive. Elle est refusée s'il y a une réservation en cours ou à venir.</p>
+  <form method="post">{% csrf_token %}
+    <button class="bouton danger">Oui, supprimer</button>
+    <a class="bouton secondaire" href="{{ request.META.HTTP_REFERER|default:'/' }}">Annuler</a>
+  </form>
+</div>
+{% endblock %}
